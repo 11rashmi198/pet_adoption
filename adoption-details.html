@@ -1,0 +1,108 @@
+<html>
+<head>
+    <title>Pet Adoption Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f7fafc;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 32px 24px;
+        }
+        h2 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 24px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f8fafc;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #3182ce;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        .confirmation {
+            background: #d1fae5;
+            color: #065f46;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pet Adoption Form</h2>
+        <form id="adoptionForm" onsubmit="return showConfirmation(event)">
+       
+            <label for="petName">Pet Name</label>
+            <select id="petName" name="petName" required>
+                <option value="">Select a pet</option>
+                <option value="Bella">Bella (Dog)</option>
+                <option value="Luna">Luna (Cat)</option>
+                <option value="Thumper">Thumper (Rabbit)</option>
+                <option value="Rio">Rio (Parrot)</option>
+            </select>
+
+            <label for="yourName">Your Name</label>
+            <input type="text" id="yourName" name="yourName" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="reason">Reason for Adoption</label>
+            <textarea id="reason" name="reason" rows="3" required></textarea>
+
+            <button type="submit">Submit Adoption Request</button>
+        </form>
+        <div class="confirmation" id="confirmationMsg">
+            Thank you for your interest in adopting a pet! We have received your request and will contact you soon.
+        </div>
+    </div>
+    <script>
+        function showConfirmation(event) {
+            event.preventDefault();
+            // Store all form details in localStorage
+            localStorage.setItem('selectedPetName', document.getElementById('petName').value);
+            localStorage.setItem('adopterName', document.getElementById('yourName').value);
+            localStorage.setItem('adopterEmail', document.getElementById('email').value);
+            localStorage.setItem('adoptionReason', document.getElementById('reason').value);
+            // Redirect to confirmation page
+            window.location.href = 'confirmation.html';
+            return false;
+        }
+    </script>
+</body>
+</html>
