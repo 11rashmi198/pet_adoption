@@ -1,0 +1,79 @@
+
+<html>
+<head>
+	<title>Adoption Confirmation</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: #f7fafc;
+			margin: 0;
+			padding: 0;
+		}
+		.confirmation-container {
+			max-width: 450px;
+			margin: 60px auto;
+			background: #fff;
+			border-radius: 12px;
+			box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+			padding: 32px 24px;
+			text-align: center;
+		}
+		.confirmation-container h2 {
+			color: #38a169;
+			margin-bottom: 18px;
+		}
+		.info {
+			margin: 18px 0;
+			font-size: 1.1rem;
+			color: #2d3748;
+		}
+		.fact {
+			background: #f1f5f9;
+			border-radius: 8px;
+			padding: 14px;
+			color: #4a5568;
+			margin-top: 24px;
+			font-style: italic;
+		}
+		.req-number {
+			font-weight: bold;
+			color: #2563eb;
+		}
+	</style>
+</head>
+<body>
+	<div class="confirmation-container">
+		<h2>Adoption Request Submitted!</h2>
+		<div class="info">
+			<div>Pet Name: <span id="petName"></span></div>
+			<div>Applicant Name: <span id="applicantName"></span></div>
+			<div>Email: <span id="applicantEmail"></span></div>
+			<div>Reason for Adoption: <span id="adoptionReason"></span></div>
+			<div>Adoption Request Number: <span class="" id="requestNumber"></span></div>
+		</div>
+		<div class="fact" id="petFact">
+			<!-- Random pet fact will appear here -->
+		</div>
+	</div>
+	<script>
+		// Generate a random request number
+		document.getElementById('requestNumber').textContent = Math.floor(100000 + Math.random() * 900000);
+
+		// List of random pet's fun facts
+		const facts = [
+			"Dogs can learn over 100 words.",
+			"Cats have five toes on their front paws, but only four on the back.",
+			"Rabbits can turn their ears 180 degrees.",
+			"Parrots can mimic human speech.",
+		];
+	// Pick a random fact
+	document.getElementById('petFact').textContent = facts[Math.floor(Math.random() * facts.length)];
+
+	// Display values from localStorage
+	document.getElementById('petName').textContent = localStorage.getItem('selectedPetName') || '-';
+	document.getElementById('applicantName').textContent = localStorage.getItem('adopterName') || '-';
+	document.getElementById('applicantEmail').textContent = localStorage.getItem('adopterEmail') || '-';
+	document.getElementById('adoptionReason').textContent = localStorage.getItem('adoptionReason') || '-';
+	</script>
+</body>
+</html>
